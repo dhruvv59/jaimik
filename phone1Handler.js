@@ -133,17 +133,17 @@ exports.handleMessage = async (req, res) => {
           resetUserState(from);
           await sendWhatsAppMessage(
             from,
-            "Vehicle Recharge is over!!!\nContact on this number :- +91 88662 65662",
+            "To use the service, call this number :- 7490813195",
             "en"
           );
           await sendWhatsAppMessageOF(
             from,
-            "वाहन रिचार्ज ख़त्म!!!\nइस नंबर पर संपर्क करें:- +91 88662 65662",
+            "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195",
             "hi"
           );
           await sendWhatsAppMessageOF(
             from,
-            "વાહન રિચાર્જ સમાપ્ત થઈ ગયું છે !!!\nઆ નંબર પર સંપર્ક કરો:- +91 88662 65662",
+            "સેવાના ઉપયોગ માટે આ નંબર પર કોલ કરો :- 7490813195",
             "gu"
           );
         } else {
@@ -733,6 +733,11 @@ async function fetchVehicle(vehicleNumber, phoneNumber) {
       // } else {
       return { success: true, data: res.data };
       // }
+    } else if (res.data[0] == "NON") {
+      return {
+        success: false,
+        message: "expiry",
+      };
     } else {
       return {
         success: false, //need+
