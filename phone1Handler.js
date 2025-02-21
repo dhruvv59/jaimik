@@ -89,7 +89,7 @@ exports.handleMessage = async (req, res) => {
       console.log(`blocked:- ${from}`);
       return; // Stop further processing
     }
-    console.log(`Sender:- ${from} And Msg:- ${text}`);
+    // console.log(`Sender:- ${from} And Msg:- ${text}`);
     if (
       // userState.step === 0 &&
       typeof text === "string" &&
@@ -414,7 +414,7 @@ const checkVehBlockStatus = async (vehicle_number) => {
     const [results] = await db.execute(query, [vehicle_number]);
 
     if (results.length === 0) {
-      console.log(results);
+      // console.log(results);
       return false; // Number not found
     }
 
@@ -923,7 +923,7 @@ async function submitComplaint(from, userState) {
   }
 
   const url = `https://app.jaimik.com/wp_api/wp_push.php?vehicleNumber=${userState.vehicleNumber}&imei=${userState.imei}&lat=${userState.latitude}&long=${userState.longitude}&agency=${userState.agency}&subagency=${userState.subagency}&number=${from}`;
-
+  console.log(url);
   try {
     const response = await axios.get(url);
     if (response.data?.msg === "success") {
