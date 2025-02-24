@@ -541,7 +541,7 @@ async function saveContactToDatabase(number, name) {
 
 async function getSupportMessage() {
   try {
-    const [rows] = await pool.query(
+    const [rows] = await db.query(
       "SELECT whatsapp_message FROM data_port LIMIT 1"
     );
     return rows[0].whatsapp_message;
