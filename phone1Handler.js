@@ -131,21 +131,22 @@ exports.handleMessage = async (req, res) => {
       if (!response.success || !response.data[0]?.deviceid) {
         if (response.message == "expiry") {
           resetUserState(from);
-          await sendWhatsAppMessage(
-            from,
-            "To use the service, call this number :- 7490813195",
-            "en"
-          );
+          const supportNumber = await getSupportMessage();
+          // await sendWhatsAppMessage(
+          //   from,
+          //   "To use the service, call this number :- 7490813195",
+          //   "en"
+          // );
           await sendWhatsAppMessageOF(
             from,
-            "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195",
+            supportNumber,
             "hi"
           );
-          await sendWhatsAppMessageOF(
-            from,
-            "સેવાના ઉપયોગ માટે આ નંબર પર કોલ કરો :- 7490813195",
-            "gu"
-          );
+          // await sendWhatsAppMessageOF(
+          //   from,
+          //   "સેવાના ઉપયોગ માટે આ નંબર પર કોલ કરો :- 7490813195",
+          //   "gu"
+          // );
         } else {
           userState.vehicleAttempts += 1;
           if (userState.vehicleAttempts >= 3) {
@@ -432,6 +433,20 @@ const getCurrentWeek = () => {
   const days = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
   return Math.ceil((days + startOfYear.getDay() + 1) / 7);
 };
+
+async function getSupportMessage() {
+  try {
+    const [rows] = await pool.query(
+      "SELECT whatsapp_message FROM data_port LIMIT 1"
+    );
+    return rows.length > 0
+      ? rows[0].whatsapp_message
+      : "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195";
+  } catch (error) {
+    console.error("Error fetching support message:", error);
+    return "Default support message"; // Fallback message
+  }
+}
 
 async function weekCheck(vehicleNumber, mobileNumber, currentWeek, limit) {
   try {
