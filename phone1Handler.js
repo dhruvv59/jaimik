@@ -434,20 +434,6 @@ const getCurrentWeek = () => {
   return Math.ceil((days + startOfYear.getDay() + 1) / 7);
 };
 
-async function getSupportMessage() {
-  try {
-    const [rows] = await pool.query(
-      "SELECT whatsapp_message FROM data_port LIMIT 1"
-    );
-    return rows.length > 0
-      ? rows[0].whatsapp_message
-      : "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195";
-  } catch (error) {
-    console.error("Error fetching support message:", error);
-    return error; // Fallback message
-  }
-}
-
 async function weekCheck(vehicleNumber, mobileNumber, currentWeek, limit) {
   try {
     // Step 1: Check if the vehicle is already registered this week
@@ -550,6 +536,18 @@ async function saveContactToDatabase(number, name) {
     console.log(`Saved or updated contact: ${number} - ${name}`);
   } catch (err) {
     console.error("Error interacting with the database:", err);
+  }
+}
+
+async function getSupportMessage() {
+  try {
+    const [rows] = await pool.query(
+      "SELECT whatsapp_message FROM data_port LIMIT 1"
+    );
+    return rows[0].whatsapp_message;
+  } catch (error) {
+    console.error("Error fetching support message:", error);
+    return "error सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195"; // Fallback message
   }
 }
 
