@@ -444,7 +444,7 @@ async function getSupportMessage() {
       : "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195";
   } catch (error) {
     console.error("Error fetching support message:", error);
-    return "Default support message"; // Fallback message
+    return "सेवा का उपयोग करने के लिए इस नंबर पर कॉल करें :- 7490813195"; // Fallback message
   }
 }
 
