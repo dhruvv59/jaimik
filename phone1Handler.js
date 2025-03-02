@@ -140,7 +140,7 @@ exports.handleMessage = async (req, res) => {
           await sendWhatsAppMessageOF(
             from,
             supportNumber,
-            "hi"
+            "en"
           );
           // await sendWhatsAppMessageOF(
           //   from,
