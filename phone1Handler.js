@@ -36,11 +36,11 @@ function resetUserState(from) {
   sessionTimeouts[from] = setTimeout(async () => {
     delete userSessions[from];
     delete sessionTimeouts[from];
-    await sendWhatsAppMessage(
-      from,
-      "Your session has ended. Send 'Hi' to start the conversation.",
-      "en"
-    );
+    // await sendWhatsAppMessage(
+    //   from,
+    //   "Your session has ended. Send 'Hi' to start the conversation.",
+    //   "en"
+    // );123
     await sendWhatsAppMessageOF(
       from,
       "आपका सत्र समाप्त हो गया है। बातचीत शुरू करने के लिए 'Hi' भेजें।",
@@ -96,11 +96,11 @@ exports.handleMessage = async (req, res) => {
       text.toLowerCase() === "hi"
     ) {
       // resetUserState(from);
-      await sendWhatsAppMessage(
-        from,
-        "Please enter your vehicle number.",
-        "en"
-      );
+    //   await sendWhatsAppMessage(
+    //     from,
+    //     "Please enter your vehicle number.",
+    //     "en"
+    //   );123
       await sendWhatsAppMessageOF(
         from,
         "कृपया अपनी वाहन संख्या दर्ज करें।",
@@ -151,11 +151,11 @@ exports.handleMessage = async (req, res) => {
           userState.vehicleAttempts += 1;
           if (userState.vehicleAttempts >= 3) {
             resetUserState(from);
-            await sendWhatsAppMessage(
-              from,
-              "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
-              "en"
-            );
+            // await sendWhatsAppMessage(
+            //   from,
+            //   "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
+            //   "en"
+            // );123
             await sendWhatsAppMessageOF(
               from,
               "आपने अनुमत प्रयासों को पार कर लिया है। 'Hi' भेजकर बातचीत शुरू करें।",
@@ -167,11 +167,11 @@ exports.handleMessage = async (req, res) => {
               "gu"
             );
           } else {
-            await sendWhatsAppMessage(
-              from,
-              `Enter Correct Vehicle Number!!!`,
-              "en"
-            );
+            // await sendWhatsAppMessage(
+            //   from,
+            //   `Enter Correct Vehicle Number!!!`,
+            //   "en"
+            // );123
             await sendWhatsAppMessageOF(from, `सही वाहन नंबर दालीये!!!`, "hi");
             await sendWhatsAppMessageOF(
               from,
@@ -265,11 +265,11 @@ exports.handleMessage = async (req, res) => {
             }
           } else {
             resetUserState(from);
-            await sendWhatsAppMessage(
-              from,
-              "You've reached your weekly limit for vehicle complaints, please try another mobile number to register a complaint.",
-              "en"
-            );
+            // await sendWhatsAppMessage(
+            //   from,
+            //   "You've reached your weekly limit for vehicle complaints, please try another mobile number to register a complaint.",
+            //   "en"
+            // );123
             await sendWhatsAppMessageOF(
               from,
               "आप वाहन शिकायतों के लिए अपनी साप्ताहिक सीमा तक पहुँच गए हैं, कृपया शिकायत दर्ज करने के लिए कोई अन्य मोबाइल नंबर आज़माएँ।",
@@ -293,11 +293,11 @@ exports.handleMessage = async (req, res) => {
         userState.locationAttempts += 1;
         if (userState.locationAttempts >= 3) {
           resetUserState(from);
-          await sendWhatsAppMessage(
-            from,
-            "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
-            "en"
-          );
+        //   await sendWhatsAppMessage(
+        //     from,
+        //     "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
+        //     "en"
+        //   );123
           await sendWhatsAppMessageOF(
             from,
             "आपने अनुमत प्रयासों को पार कर लिया है। 'Hi' भेजकर बातचीत शुरू करें।",
@@ -309,7 +309,7 @@ exports.handleMessage = async (req, res) => {
             "gu"
           );
         } else {
-          await sendWhatsAppMessage(from, `Invalid option.`, "en");
+        //   await sendWhatsAppMessage(from, `Invalid option.`, "en");123
           await sendWhatsAppMessageOF(from, `अमान्य विकल्प।`, "hi");
           await sendWhatsAppMessageOF(from, `અમાન્ય વિકલ્પ.`, "gu");
         }
@@ -325,11 +325,11 @@ exports.handleMessage = async (req, res) => {
         userState.locationAttempts += 1;
         if (userState.locationAttempts >= 3) {
           resetUserState(from);
-          await sendWhatsAppMessage(
-            from,
-            "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
-            "en"
-          );
+        //   await sendWhatsAppMessage(
+        //     from,
+        //     "You have exceeded the allowed attempts. Send 'Hi' to start the conversation.",
+        //     "en"
+        //   );123
           await sendWhatsAppMessageOF(
             from,
             "आपने अनुमत प्रयासों को पार कर लिया है। 'Hi' भेजकर बातचीत शुरू करें।",
@@ -341,11 +341,11 @@ exports.handleMessage = async (req, res) => {
             "gu"
           );
         } else {
-          await sendWhatsAppMessage(
-            from,
-            `Please share a valid location.`,
-            "en"
-          );
+        //   await sendWhatsAppMessage(
+        //     from,
+        //     `Please share a valid location.`,
+        //     "en"
+        //   );123
           await sendWhatsAppMessageOF(
             from,
             `कृपया एक मान्य स्थान साझा करें।`,
@@ -356,11 +356,11 @@ exports.handleMessage = async (req, res) => {
       }
     } else {
       resetUserState(from);
-      await sendWhatsAppMessage(
-        from,
-        "Sorry, I didn't understand that. Send 'Hi' to start the conversation.",
-        "en"
-      );
+    //   await sendWhatsAppMessage(
+    //     from,
+    //     "Sorry, I didn't understand that. Send 'Hi' to start the conversation.",
+    //     "en"
+    //   );123
       await sendWhatsAppMessageOF(
         from,
         "मुझे खेद है, मुझे यह समझ में नहीं आया। 'Hi' भेजकर बातचीत शुरू करें।",
@@ -374,11 +374,11 @@ exports.handleMessage = async (req, res) => {
     }
   } catch (error) {
     console.error("Error:", error);
-    await sendWhatsAppMessage(
-      from,
-      "An error occurred. Please try again.",
-      "en"
-    );
+    // await sendWhatsAppMessage(
+    //   from,
+    //   "An error occurred. Please try again.",
+    //   "en"
+    // );123
     await sendWhatsAppMessageOF(
       from,
       "एक त्रुटि हुई। कृपया फिर से प्रयास करें।",
@@ -917,11 +917,11 @@ async function submitComplaint(from, userState) {
     const remainingTime = Math.ceil(
       (5 * 60 * 1000 - (currentTime - lastSubmissionTime)) / 1000
     );
-    await sendWhatsAppMessage(
-      from,
-      `You can only submit your complaint again after ${remainingTime} seconds.`,
-      "en"
-    );
+    // await sendWhatsAppMessage(
+    //   from,
+    //   `You can only submit your complaint again after ${remainingTime} seconds.`,
+    //   "en"
+    // );123
     await sendWhatsAppMessageOF(
       from,
       `आप अपनी शिकायत फिर से ${remainingTime} सेकंड में सबमिट कर सकते हैं।`,
@@ -941,11 +941,11 @@ async function submitComplaint(from, userState) {
     const response = await axios.get(url);
     if (response.data?.msg === "success") {
       // Send success messages in multiple languages
-      await sendWhatsAppMessage(
-        from,
-        "Your complaint has been submitted successfully.",
-        "en"
-      );
+    //   await sendWhatsAppMessage(
+    //     from,
+    //     "Your complaint has been submitted successfully.",
+    //     "en"
+    //   );123
       await sendWhatsAppMessageOF(
         from,
         "आपकी शिकायत सफलतापूर्वक दर्ज की गई है।",
@@ -1001,11 +1001,11 @@ async function submitComplaint(from, userState) {
             timeDiffServer <= 25
           ) {
             // Send data update success message
-            await sendWhatsAppMessage(
-              from,
-              `Your data for ${userState.vehicleNumber} has been updated successfully.`,
-              "en"
-            );
+            // await sendWhatsAppMessage(
+            //   from,
+            //   `Your data for ${userState.vehicleNumber} has been updated successfully.`,
+            //   "en"
+            // );123
             await sendWhatsAppMessageOF(
               from,
               `आपका ${userState.vehicleNumber} का डेटा सफलतापूर्वक अपडेट हो गया है।`,
@@ -1035,11 +1035,11 @@ async function submitComplaint(from, userState) {
       pollLatLng();
     } else {
       // Send failure messages
-      await sendWhatsAppMessage(
-        from,
-        "Your complaint submission failed. Please try again later.",
-        "en"
-      );
+    //   await sendWhatsAppMessage(
+    //     from,
+    //     "Your complaint submission failed. Please try again later.",
+    //     "en"
+    //   );123
       await sendWhatsAppMessageOF(
         from,
         "आपकी शिकायत सबमिट नहीं की गई। कृपया बाद में पुनः प्रयास करें।",
@@ -1053,11 +1053,11 @@ async function submitComplaint(from, userState) {
     }
   } catch (error) {
     console.error("Complaint submission error:", error);
-    await sendWhatsAppMessage(
-      from,
-      "An error occurred while submitting your complaint. Please try again later.",
-      "en"
-    );
+    // await sendWhatsAppMessage(
+    //   from,
+    //   "An error occurred while submitting your complaint. Please try again later.",
+    //   "en"
+    // );123
     await sendWhatsAppMessageOF(
       from,
       "आपकी शिकायत दर्ज करते समय त्रुटि हुई। कृपया फिर से प्रयास करें।",
