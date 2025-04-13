@@ -60,10 +60,6 @@ exports.handleMessage = async (req, res) => {
     req.body
   );
 
-  await axios.post(
-    "https://whatsinfinity.com/webhook/whatsapp/202504131036529VsWX",
-    req.body
-  );
 
   const app = express();
   app.use(bodyParser.json());
