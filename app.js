@@ -16,11 +16,7 @@ const PHONE_NUMBER_2 = "532876653233461";
 app.post("/webhook", async (req, res) => {
   const body = req.body;
   console.log(req.body);
-
-    await axios.post(
-    "https://whatsinfinity.com/webhook/whatsapp/202504131036529VsWX",
-    req.body
-  );
+  
   // console.log(body.whatsapp_webhook_payload);
   // console.log("Full Data:", JSON.stringify(body.whatsapp_webhook_payload, null, 2));
 
@@ -35,6 +31,13 @@ app.post("/webhook", async (req, res) => {
 
       if (message) {
         // Route to the appropriate handler based on phone_number_id
+        if(phoneNumberId == "532876653233461"){
+           await axios.post(
+    "https://whatsinfinity.com/webhook/whatsapp/202504131036529VsWX",
+    req.body
+  );
+        }
+        else{
         switch (phoneNumberId) {
           case PHONE_NUMBER_1:
             phone1Handler.handleMessage(req, res);
@@ -44,6 +47,7 @@ app.post("/webhook", async (req, res) => {
           //   break;
           default:
             console.log("Unknown phone number ID:", phoneNumberId);
+        }
         }
       }
     }
